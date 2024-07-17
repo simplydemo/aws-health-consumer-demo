@@ -1,0 +1,60 @@
+{
+  "cardsV2": [
+    {
+      "cardId": "<id>",
+      "card": {
+        "header": {
+          "title": "<title>",
+          "subtitle": "<subtitle>",
+          "imageUrl": "<img url>",
+          "imageType": "CIRCLE"
+        },
+        "sections": [
+          {
+            "header": "<header>",
+            "collapsible": false,
+            "uncollapsibleWidgetsCount": 1,
+            "widgets": [
+              {
+                "textParagraph": {
+                  "text": "<header>"
+                }
+              }
+            ]
+          },
+          {
+            "header": "<header>",
+            "collapsible": true,
+            "uncollapsibleWidgetsCount": 0,
+            "widgets": [
+              {
+                "textParagraph": {
+                  "text": "<header>"
+                }
+              }
+            ]
+          },
+          {
+            "collapsible": false,
+            "widgets": [
+              {
+                "buttonList": {
+                  "buttons": [
+                    {
+                      "text": "<header>",
+                      "onClick": {
+                        "openLink": {
+                          "url": "<url>"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

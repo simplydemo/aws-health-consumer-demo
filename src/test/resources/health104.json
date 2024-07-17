@@ -1,0 +1,39 @@
+{
+  "version": "0",
+  "id": "934c1db0-b85d-75e2-e984-2d7099fef6ac",
+  "detail-type": "AWS Health Event",
+  "source": "aws.health",
+  "account": "222233334444",
+  "time": "2024-07-05T19:00:31Z",
+  "region": "ap-northeast-2",
+  "resources": [
+    "222233334444"
+  ],
+  "detail": {
+    "eventArn": "arn:aws:health:ap-northeast-2::event/AUTOSCALING/AWS_AUTOSCALING_OPERATIONAL_NOTIFICATION/AWS_AUTOSCALING_OPERATIONAL_NOTIFICATION_426bec76e5cc84bd89323793eb56bd64d769eb57e4afe74d3216118bf1875bdf",
+    "service": "AUTOSCALING",
+    "eventTypeCode": "AWS_AUTOSCALING_OPERATIONAL_NOTIFICATION",
+    "eventTypeCategory": "accountNotification",
+    "eventScopeCode": "ACCOUNT_SPECIFIC",
+    "communicationId": "4f3331d3b11b53192f0e01bf607a91c5ba9830756bdf52b3c90ac49e7000ef56-1",
+    "startTime": "Fri, 5 Jul 2024 10:25:00 GMT",
+    "lastUpdatedTime": "Fri, 5 Jul 2024 19:00:29 GMT",
+    "statusCode": "open",
+    "eventRegion": "ap-northeast-2",
+    "eventDescription": [
+      {
+        "language": "en_US",
+        "latestDescription": "English follows Korean | 한국어버전 뒤에 영어버전이 있습니다 \n\n2021년에 AWS는 시작 구성을 더 이상 사용하지 않고, 대신 시작 템플릿을 사용할 계획을 발표했습니다. 그 이후로 시작 템플릿으로의 마이그레이션을 장려하기 위해 지속적인 개선이 이루어졌습니다. 이 알림에는 시작 구성 지원 중단 프로세스의 다음 단계에 대한 세부 정보가 포함되어 있습니다. \n\n2024년 10월 1일부터는 새로운 시작 구성을 생성할 수 없습니다. 단, 2024년 7월 1일에서 2024년 10월 1일 사이의 특정 시점에 AWS 계정 또는 AWS 조직에 시작 구성이 있었던 AWS 리전은 예외입니다.\n\n영향을 받는 계정에서 API 또는 CLI를 통해 시작 구성을 생성하려고 하면 다음과 같은 예외가 발생합니다.\n\n지원되지 않는 작업 예외: 계정에서 시작 구성 생성 작업을 수행할 수 없습니다. 시작 템플릿을 사용하여 Auto Scaling 그룹을 위한 구성 템플릿을 생성할 수 있습니다.\n\n이 단계 이전에 이미 다음과 같은 조치를 취해 시작 구성을 지원 중단하기 시작했습니다.\n\n* 2023년 1월 1일 이후 출시 구성이 해당 날짜 이후에 출시된 새 인스턴스 유형으로 업데이트되지 않았습니다. 2023년 1월 1일 이전에 리전에 출시된 새 인스턴스 유형 중 해당 날짜 이후에 사용할 수 있게 된 모든 새 인스턴스 유형은 시작 구성을 통해 액세스할 수 없습니다. 최신 인스턴스 유형을 사용하려면 사용자는 시작 템플릿 사용으로 전환해야 합니다.\n* 2023년 1월 1일 이후 시작 구성에 새로운 EC2 기능 업데이트가 제공되지 않았습니다. 새 EC2 기능을 사용하려면 이제 사용자가 시작 템플릿을 사용해야 합니다.\n* 2023년 4월 1일부터 새 AWS 계정은 더 이상 EC2 콘솔에서 시작 구성을 생성할 수 없습니다. 이 날짜 이전에 생성된 계정만 액세스 권한을 유지합니다.\n\n나머지 시작 구성 고객은 가능한 한 빨리 시작 템플릿으로 마이그레이션할 것을 강력히 권장합니다. 설명서에는 콘솔 마이그레이션 도구를 사용하여 시작 구성을 시작 템플릿으로 변환하는 방법에 대한 지침이 기재되어 있습니다 [1]. 아직 시작 구성을 사용하고 있는 Auto Scaling 그룹을 식별하려면 이 스크립트를 실행할 수 있습니다 [2].\n\n질문이나 우려 사항이 있으신 경우 AWS Support [3] 에 문의하시기 바랍니다.\n\n[1] https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html\n[2] https://github.com/aws-samples/amazon-ec2-auto-scaling-group-examples/tree/main/tools/launch-configuration-inventory\n[3] https://aws.amazon.com/support\n\n---\n\nIn 2021, AWS announced the plan to deprecate launch configurations in favor of launch templates. Since that time, continual enhancements have been made to encourage migration to launch templates. This notification contains details about the next step in the launch configuration deprecation process. \n\nStarting on October 1, 2024, you will be unable to create new launch configurations except in AWS Regions where you had a launch configuration in your AWS account or AWS Organizations at some point between July 1, 2024 and October 1, 2024.\n\nAffected accounts will receive the following exception when trying to create a launch configuration through the API or CLI:\n\nUnsupportedOperationException: The launch configuration creation operation is not available in your account. Use launch templates to create configuration templates for your Auto Scaling groups.\n\nPrior to this step, we have already taken the following actions to begin deprecating launch configurations:\n\n* Since January 1, 2023, launch configurations have not been updated with new instance types released after that date. Any new instance types that were released before January 1, 2023 in regions that became available after that date remain inaccessible through launch configurations. To use the latest instance types, users must transition to using launch templates.\n* Since January 1, 2023, launch configurations have not received any new EC2 feature updates. To use new EC2 features, users must now use launch templates.\n* Since April 1, 2023, new AWS accounts can no longer create launch configurations in the EC2 console. Only accounts created before this date retain access.\n\nWe strongly encourage the remaining customers of launch configurations to migrate to launch templates as soon as possible. Our documentation provides guidance on using the console migration tool to convert launch configurations to launch templates [1]. To identify Auto Scaling groups that are still using launch configurations, you can run this script [2].\n\nIf you have any questions or concerns, please reach out to AWS Support [3].\n\n[1] https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html\n[2] https://github.com/aws-samples/amazon-ec2-auto-scaling-group-examples/tree/main/tools/launch-configuration-inventory\n[3] https://aws.amazon.com/support"
+      }
+    ],
+    "affectedEntities": [
+      {
+        "entityValue": "222233334444",
+        "lastUpdatedTime": "Fri, 5 Jul 2024 15:56:45 GMT"
+      }
+    ],
+    "affectedAccount": "222233334444",
+    "page": "1",
+    "totalPages": "1"
+  }
+}

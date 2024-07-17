@@ -1,0 +1,9 @@
+FROM amazoncorretto:17-alpine
+
+RUN mkdir /apps
+
+WORKDIR /apps
+
+COPY ./target/aws-health-consumer-1.0.0-SNAPSHOT.jar /apps/health-consumer.jar
+
+CMD ["java", "-cp", "/apps/health-consumer.jar", "io.github.simplydemo.LambdaHandler::handleRequest"]

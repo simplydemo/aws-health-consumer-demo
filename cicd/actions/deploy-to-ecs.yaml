@@ -1,0 +1,71 @@
+name: aws-health-consumer deploy to Lambda
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: input profile for build and runtime
+        type: string
+        default: "dev"
+        required: true
+
+jobs:
+  build:
+    name: Build Artifact
+    runs-on: ubuntu-latest
+    environment:
+      name: SimplyDemo
+      url: https://github.com
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+          cache: maven
+
+      - name: Get project version
+        id: get_version
+        run: echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_OUTPUT
+
+      - name: Build Artifact
+        run: mvn package -DskipTests=true -B -file pom.xml
+
+      - name: Setup Qemu
+        # https://github.com/docker/setup-qemu-action
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Issue STS Token
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ACTIONS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: SimpleDemoGitHubActions
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          mask-password: 'false'
+          registry-type: private
+
+      - name: Build and Deploy Image
+        env:
+          VERSION: ${{ steps.get_version.outputs.version }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./cicd/docker/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: "${{ env.REPOSITORY_URL }}:${{ env.VERSION }}.${GITHUB_RUN_NUMBER}"
+          build-args: |
+            VERSION=${{ env.VERSION }}
+            PROFILE=${{ github.event.inputs.profile }}
+        run: docker image ls

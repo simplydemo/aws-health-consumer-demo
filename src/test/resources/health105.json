@@ -1,0 +1,32 @@
+{
+  "version": "0",
+  "id": "56cb8440-991d-5a5c-1bad-ce2e23c0a3b1",
+  "detail-type": "AWS Health Event",
+  "source": "aws.health",
+  "account": "222233334444",
+  "time": "2024-07-12T15:17:17Z",
+  "region": "us-east-1",
+  "resources": [],
+  "detail": {
+    "eventArn": "arn:aws:health:us-east-1::event/MULTIPLE_SERVICES/AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE/AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE_2FF93_A6DC3290177",
+    "service": "MULTIPLE_SERVICES",
+    "eventTypeCode": "AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE",
+    "eventTypeCategory": "issue",
+    "eventScopeCode": "PUBLIC",
+    "communicationId": "743de80e9dd8fdf6084c9deb04629411c7339b31-1",
+    "startTime": "Fri, 12 Jul 2024 14:46:36 GMT",
+    "endTime": "Fri, 12 Jul 2024 15:17:11 GMT",
+    "lastUpdatedTime": "Fri, 12 Jul 2024 15:17:10 GMT",
+    "statusCode": "open",
+    "eventRegion": "us-east-1",
+    "eventDescription": [
+      {
+        "language": "en_US",
+        "latestDescription": "Current severity level: Operating normally\n\n[RESOLVED] Elevated delays in newly applied tags\n\n[08:17 AM PDT] Between 6:07 AM and 7:45 AM PDT, we experienced delays in newly applied resource tags being visible in Describe API calls in the US-EAST-1 Region. This issue also affected the results of describe calls that use tag filters. In addition, services that use tags during resource creation may have experienced further delays. The root cause was due to a change to the tag replication subsystem. We recovered by rolling back the change. The issue has been resolved and the Describe API calls and resource creation APIs are operating normally.\n\nThe following AWS services were previously impacted but are now operating normally: APPSTREAM2, BILLINGCONSOLE, CLOUD9, EC2, EKS, ELASTICSEARCH, SAGEMAKER, WORKSPACES."
+      }
+    ],
+    "affectedAccount": "222233334444",
+    "page": "1",
+    "totalPages": "1"
+  }
+}

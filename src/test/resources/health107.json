@@ -1,0 +1,383 @@
+{
+  "version": "0",
+  "id": "be408881-545c-29bb-f775-bd461fa00031",
+  "detail-type": "AWS Health Event",
+  "source": "aws.health",
+  "account": "222233334444",
+  "time": "2024-07-13T15:34:39Z",
+  "region": "ap-northeast-2",
+  "resources": [
+    "MYECS-CLUSTER|ASSETSTATISTICS-BATCH",
+    "MYECS-CLUSTER|PLATEVENT-CONSUMER",
+    "MYECS-CLUSTER|GOV-API",
+    "MYECS-CLUSTER|COSTDIS-API",
+    "MYECS-CLUSTER|ASSETRSC-PROCESSOR",
+    "MYECS-CLUSTER|SSO-LEGACY",
+    "MYECS-CLUSTER|ASSETGCP-PROCESSOR",
+    "MYECS-CLUSTER|PLATADMIN-WEB",
+    "MYECS-CLUSTER|CRE2-WEB",
+    "MYECS-CLUSTER|POLICY-US2BATCH",
+    "MYECS-CLUSTER|ASSET-WEB",
+    "MYECS-CLUSTER|PLATSSO-WEB",
+    "MYECS-CLUSTER|OPENAPI-COST",
+    "MYECS-CLUSTER|ASSETCOM-SCHEDULER",
+    "MYECS-CLUSTER|ASSETNCP-COLLECTOR",
+    "MYECS-CLUSTER|GUIDE-NGINX",
+    "MYECS-CLUSTER|AUTHSYNC-PROCESS",
+    "MYECS-CLUSTER|PLATADMIN-API2",
+    "MYECS-CLUSTER|SPIDER-BATCH5M",
+    "MYECS-CLUSTER|GOV-WEB",
+    "MYECS-CLUSTER|OPENAPI2-COST",
+    "MYECS-CLUSTER|ADM-WEB",
+    "MYECS-CLUSTER|PADM-API",
+    "MYECS-CLUSTER|ASSETAWS-SCHEDULER",
+    "MYECS-CLUSTER|COST2-WEB",
+    "MYECS-CLUSTER|COSTOPT-API2",
+    "MYECS-CLUSTER|POLICY-US2API",
+    "MYECS-CLUSTER|CRE2-API",
+    "MYECS-CLUSTER|KPI-WEB",
+    "MYECS-CLUSTER|COSTCOM-SCHEDULER",
+    "MYECS-CLUSTER|PLATADMIN-WEB2",
+    "MYECS-CLUSTER|COSTOPT-API",
+    "MYECS-CLUSTER|SCHEDULING-PROCESSOR",
+    "MYECS-CLUSTER|ADM-API",
+    "MYECS-CLUSTER|SVCGRP-BATCH",
+    "MYECS-CLUSTER|CMS-WEB",
+    "MYECS-CLUSTER|ASSETOCI-COLLECTOR",
+    "MYECS-CLUSTER|ASSETAZR-SCHEDULER",
+    "MYECS-CLUSTER|ASSETAZR-COLLECTOR",
+    "MYECS-CLUSTER|ORGTREE-WEB",
+    "MYECS-CLUSTER|AISEARCH-APIUS2",
+    "MYECS-CLUSTER|SAASOPS-API",
+    "MYECS-CLUSTER|ASSETAZR-PROCESSOR",
+    "MYECS-CLUSTER|GOV-BATCHV2",
+    "MYECS-CLUSTER|COSTCOM-PROCESS",
+    "MYECS-CLUSTER|KPI-BATCH",
+    "MYECS-CLUSTER|CRE-API",
+    "MYECS-CLUSTER|ASSETGCP-SCHEDULER",
+    "MYECS-CLUSTER|ASSETGCP-COLLECTOR",
+    "MYECS-CLUSTER|AISEARCH-API3",
+    "MYECS-CLUSTER|SAASOPS-WEB",
+    "MYECS-CLUSTER|COSTSAVE-WEB",
+    "MYECS-CLUSTER|OPENAPI-PROXY",
+    "MYECS-CLUSTER|PORTAL-BATCH",
+    "MYECS-CLUSTER|SPIDER-API",
+    "MYECS-CLUSTER|COST-API",
+    "MYECS-CLUSTER|ASSETNCP-SCHEDULER",
+    "MYECS-CLUSTER|COSTOPT-WEB"
+  ],
+  "detail": {
+    "eventArn": "arn:aws:health:ap-northeast-2::event/ECS/AWS_ECS_TASK_PATCHING_RETIREMENT/AWS_ECS_TASK_PATCHING_RETIREMENT-ICN-DockerLinux-1-4-0-263-222233334444-MANAGED",
+    "service": "ECS",
+    "eventTypeCode": "AWS_ECS_TASK_PATCHING_RETIREMENT",
+    "eventTypeCategory": "scheduledChange",
+    "eventScopeCode": "ACCOUNT_SPECIFIC",
+    "communicationId": "fa85c8b1d6a6f96111949e35195ad1afa6ad6b2c-1",
+    "startTime": "Sat, 20 Jul 2024 15:00:00 GMT",
+    "endTime": "Sat, 27 Jul 2024 15:00:00 GMT",
+    "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT",
+    "statusCode": "upcoming",
+    "eventRegion": "ap-northeast-2",
+    "eventDescription": [
+      {
+        "language": "en_US",
+        "latestDescription": "You are receiving this notification because AWS Fargate has deployed a new platform version revision (1) and will retire any tasks running on previous platform version revision(s) starting at Sat, 20 Jul 2024 15:00 GMT as part of routine task maintenance (2). Please check the \\\"Affected Resources\\\" tab of your AWS Health Dashboard for a list of affected tasks. There is no action required on your part unless you want to replace these tasks before Fargate does. When using the default value of 100% for minimum healthy percent configuration of an ECS service (3), a replacement task will be launched on the most recent platform version revision before the affected task is retired. Any tasks launched after Sat, 13 Jul 2024 15:00 GMT were launched on the new platform version revision.\\n\\nAWS Fargate is a serverless, pay-as-you-go compute engine that lets you focus on building applications without managing servers. As described in the Fargate documentation (2) and (4), Fargate regularly deploys platform version revisions to make new features available and for routine maintenance. The Fargate update includes the most current Linux kernel and runtime components. Fargate will gradually replace the tasks in your service using your configured deployment settings, ensuring all tasks run on the new Fargate platform version revision.\\n\\nWe do not expect this update to impact your ECS services. However, if you want to control when your tasks are replaced, you can initiate an ECS service update before Sat, 20 Jul 2024 15:00 GMT by following the instructions below.\\n\\nIf you are using the rolling deployment type for your service, you can run the update-service command from the AWS command-line interface specifying force-new-deployment:\\n\\n$ aws ecs update-service --service service_name \\\n--cluster cluster_name --force-new-deployment\\n\\nIf you are using the Blue/Green deployment type, please refer to the documentation for create-deployment (5) and create a new deployment using the same task definition version.\\n\\nPlease contact AWS Support (6) if you have any questions or concerns.\\n\\n(1) https://docs.aws.amazon.com/AmazonECS/latest/userguide/AWS_Fargate-versions.html\\n(2) https://docs.aws.amazon.com/AmazonECS/latest/userguide/task-maintenance.html\\n(3) https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_parameters.html#sd-deploymentconfiguration\\n(4) https://aws.amazon.com/blogs/containers/improving-operational-visibility-with-aws-fargate-task-retirement-notifications/\\n(5) https://docs.aws.amazon.com/cli/latest/reference/deploy/create-deployment.html\\n(6) https://aws.amazon.com/support\\n\\n"
+      }
+    ],
+    "affectedEntities": [
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETSTATISTICS-BATCH",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|PLATEVENT-CONSUMER",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|GOV-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COSTDIS-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETRSC-PROCESSOR",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|SSO-LEGACY",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETGCP-PROCESSOR",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|PLATADMIN-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|CRE2-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|POLICY-US2BATCH",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSET-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|PLATSSO-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|OPENAPI-COST",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETCOM-SCHEDULER",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETNCP-COLLECTOR",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|GUIDE-NGINX",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|AUTHSYNC-PROCESS",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|PLATADMIN-API2",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|SPIDER-BATCH5M",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|GOV-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|OPENAPI2-COST",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ADM-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|PADM-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETAWS-SCHEDULER",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COST2-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COSTOPT-API2",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|POLICY-US2API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|CRE2-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|KPI-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COSTCOM-SCHEDULER",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|PLATADMIN-WEB2",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COSTOPT-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|SCHEDULING-PROCESSOR",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ADM-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|SVCGRP-BATCH",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|CMS-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETOCI-COLLECTOR",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETAZR-SCHEDULER",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETAZR-COLLECTOR",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ORGTREE-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|AISEARCH-APIUS2",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|SAASOPS-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETAZR-PROCESSOR",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|GOV-BATCHV2",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COSTCOM-PROCESS",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|KPI-BATCH",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|CRE-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETGCP-SCHEDULER",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETGCP-COLLECTOR",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|AISEARCH-API3",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|SAASOPS-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COSTSAVE-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|OPENAPI-PROXY",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|PORTAL-BATCH",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|SPIDER-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COST-API",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|ASSETNCP-SCHEDULER",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      },
+      {
+        "entityValue": "MYECS-CLUSTER|COSTOPT-WEB",
+        "status": "IMPAIRED",
+        "lastUpdatedTime": "Sat, 13 Jul 2024 15:33:57 GMT"
+      }
+    ],
+    "affectedAccount": "222233334444",
+    "page": "1",
+    "totalPages": "1"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "cards": [
+    {
+      "header": {
+        "title": "This is a Test",
+        "subtitle": "Info",
+        "imageStyle": "IMAGE",
+        "imageUrl": "https://example.com/image.png"
+      },
+      "sections": [
+        {
+          "widgets": [
+            {
+              "textParagraph": {
+                "text": "This is a TEST"
+              }
+            }
+          ],
+          "header": {
+            "title": "<font color=\"#323232\">Info</font>"
+          }
+        }
+      ]
+    }
+  ]
+}

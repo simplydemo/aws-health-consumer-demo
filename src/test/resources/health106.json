@@ -1,0 +1,30 @@
+{
+  "version": "0",
+  "id": "a4fc7f0f-0298-ee24-4d6f-15e6d3aa9511",
+  "detail-type": "AWS Health Event",
+  "source": "aws.health",
+  "account": "111122223333",
+  "time": "2024-07-12T15:09:41Z",
+  "region": "us-east-1",
+  "resources": [],
+  "detail": {
+    "eventArn": "arn:aws:health:us-east-1::event/MULTIPLE_SERVICES/AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE/AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE_2FF93_A6DC3290177",
+    "service": "MULTIPLE_SERVICES",
+    "eventTypeCode": "AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE",
+    "eventTypeCategory": "issue",
+    "eventScopeCode": "PUBLIC",
+    "communicationId": "a7086fc780c21a77004cdb54b3f406b82de301c1-1",
+    "startTime": "Fri, 12 Jul 2024 14:46:36 GMT",
+    "lastUpdatedTime": "Fri, 12 Jul 2024 15:09:24 GMT",
+    "statusCode": "open",
+    "eventRegion": "us-east-1",
+    "eventDescription": [
+      {
+        "language": "en_US",
+        "latestDescription": "Current severity level: Informational\n\nElevated delays in newly applied tags\n\n[08:09 AM PDT] We have resolved the cause of the delays in newly applied resource tags becoming visible in Describe API calls in the US-EAST-1 Region.  Services that use tags during resource creation, may experience ongoing delays while they work through a backlog of requests. We continue to work towards full recovery.\n\nThe following AWS services have been affected by this event: APPSTREAM2 (Informational), BILLINGCONSOLE (Informational), CLOUD9 (Informational), EC2 (Informational), EKS (Informational), ELASTICSEARCH (Informational), SAGEMAKER (Informational), WORKSPACES (Informational)."
+      }
+    ],
+    "page": "1",
+    "totalPages": "1"
+  }
+}

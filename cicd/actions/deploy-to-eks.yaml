@@ -1,0 +1,39 @@
+name: vertx-lotto-api deploy to EKS
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: input profile for build and runtime
+        type: string
+        default: "dev"
+        required: true
+
+jobs:
+  build:
+    name: Build Artifact
+    runs-on: ubuntu-latest
+    environment:
+      name: SimplyDemo
+      url: https://github.com
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+        cache: maven
+
+      - name: Get project version
+        run: echo "::set-output name=version::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
+
+      - name: Build Artifact
+        run: mvn package -DskipTests=true -B -file pom.xml
+
+      - name: Information
+        env:
+          VERSION: ${{ steps.get_version.outputs.version }}
+        run: echo "version: ${VERSION}"

@@ -1,0 +1,39 @@
+{
+  "version": "0",
+  "id": "bbf4e8d9-082b-afe6-c423-4e9873faa0fc",
+  "detail-type": "AWS Health Event",
+  "source": "aws.health",
+  "account": "999988887777",
+  "time": "2024-07-10T09:39:52Z",
+  "region": "us-east-1",
+  "resources": [
+    "999988887777"
+  ],
+  "detail": {
+    "eventArn": "arn:aws:health:global::event/LAMBDA/AWS_LAMBDA_OPERATIONAL_NOTIFICATION/AWS_LAMBDA_OPERATIONAL_NOTIFICATION_2e961e9ab0414a2e00253133e8a58368f115e50d865b4a8898f3d982ce8df92d",
+    "service": "LAMBDA",
+    "eventTypeCode": "AWS_LAMBDA_OPERATIONAL_NOTIFICATION",
+    "eventTypeCategory": "accountNotification",
+    "eventScopeCode": "ACCOUNT_SPECIFIC",
+    "communicationId": "e46793cfb60f97693a531e465ee9b80afdf0c86ed6199f08c5fda0f96bb04226-1",
+    "startTime": "Fri, 5 Jul 2024 10:50:00 GMT",
+    "lastUpdatedTime": "Wed, 10 Jul 2024 09:39:50 GMT",
+    "statusCode": "open",
+    "eventRegion": "global",
+    "eventDescription": [
+      {
+        "language": "en_US",
+        "latestDescription": "We are reaching out to you to notify you about upcoming changes to AWS Lambda’s recursive loop detection.\n\nRecursive loop detection detects and terminates recursive loops between AWS Lambda and other supported services, preventing runaway workloads due to misconfiguration. Recursive loop detection is currently supported for loops between AWS Lambda, Amazon SQS, and Amazon SNS. In 2024, Lambda will be extending recursive loop detection support to Amazon S3. As an incremental step in the full launch of this feature, Lambda will be making underlying changes to how recursive loop detection works.\n\nStarting July 8, 2024, recursive invocations that pass through Lambda and S3 where S3 is NOT the event source or trigger to the Lambda function will be detected and terminated after approximately 16 recursive invocations. An example of a recursive loop that will now be terminated is a Lambda function storing data in S3 bucket, which triggers notifications to SNS, which triggers the same Lambda function. This update will be gradually rolled out in July in all commercial regions where recursive loop detection is supported (Recursive loop detection is not currently supported in the following commercial regions: Middle East (UAE), Asia Pacific (Hyderabad), Asia Pacific (Melbourne), Israel (Tel Aviv), Canada West (Calgary), Europe (Spain), and Europe (Zurich)).\n\nWhat action should I take?\nIf you have a function that relies on intentional recursion with Amazon S3, you should contact AWS Support [1] to opt your account out of recursive loop detection to avoid potential disruption of this workload. Please create a support case for each account that requires opt-out and state which region requires the opt-out.\n\nIf you have any questions or concerns, please reach out to your account team. Alternatively, you can reach out to contact AWS Support [1] or AWS Customer Service [2].\n\n[1] https://aws.amazon.com/support\n[2] https://aws.amazon.com/contact-us/"
+      }
+    ],
+    "affectedEntities": [
+      {
+        "entityValue": "999988887777",
+        "lastUpdatedTime": "Mon, 8 Jul 2024 09:57:35 GMT"
+      }
+    ],
+    "affectedAccount": "999988887777",
+    "page": "1",
+    "totalPages": "1"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "cardsV2": [
+    {
+      "cardId": "REQUIRED-unique-card-id",
+      "card": {
+        "header": {
+          "title": "REQUIRED-Sasha",
+          "subtitle": "REQUIRED-Software Engineer",
+          "imageUrl": "https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png",
+          "imageType": "CIRCLE",
+          "imageAltText": "Avatar for Sasha"
+        },
+        "sections": [
+          {
+            "header": "REQUIRED-Contact Info",
+            "collapsible": true,
+            "uncollapsibleWidgetsCount": 1,
+            "widgets": [
+              {
+                "decoratedText": {
+                  "startIcon": {
+                    "knownIcon": "EMAIL"
+                  },
+                  "text": "REQUIRED-sasha@example.com"
+                }
+              },
+              {
+                "decoratedText": {
+                  "startIcon": {
+                    "knownIcon": "PERSON"
+                  },
+                  "text": "REQUIRED-<font color=\"#80e27e\">Online</font>"
+                }
+              },
+              {
+                "decoratedText": {
+                  "startIcon": {
+                    "knownIcon": "PHONE"
+                  },
+                  "text": "+1 (555) 555-1234"
+                }
+              },
+              {
+                "buttonList": {
+                  "buttons": [
+                    {
+                      "text": "REQUIRED-Share",
+                      "onClick": {
+                        "openLink": {
+                          "url": "https://example.com/share"
+                        }
+                      }
+                    },
+                    {
+                      "text": "Edit",
+                      "onClick": {
+                        "action": {
+                          "function": "goToView",
+                          "parameters": [
+                            {
+                              "key": "viewType",
+                              "value": "EDIT"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
