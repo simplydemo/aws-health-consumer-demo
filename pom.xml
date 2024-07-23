@@ -2,15 +2,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.simplydemo</groupId>
-    <artifactId>aws-health-consumer</artifactId>
+    <artifactId>aws-health-delibird</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <name>aws-health-consumer</name>
+    <name>aws-health-delibird</name>
     <url>https://maven.apache.org</url>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <kotlin.version>2.0.0</kotlin.version>
@@ -80,8 +80,6 @@
             <groupId>io.github.thenovaworks</groupId>
             <artifactId>json-sql</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/dependencies/json-sql-1.0.0.jar</systemPath>
         </dependency>
 
         <!-- Test -->
@@ -109,7 +107,7 @@
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
-        <!-- <finalName>${project.artifactId}</finalName> //-->
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>

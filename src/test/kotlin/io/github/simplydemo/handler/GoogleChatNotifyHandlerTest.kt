@@ -1,19 +1,44 @@
 package io.github.simplydemo.handler
 
+import com.amazonaws.services.lambda.runtime.LambdaLogger
 import io.github.simplydemo.AbstractTests
 import io.github.simplydemo.gchat.message.CardsV2Builder
 import io.github.simplydemo.gchat.message.WidgetsBuilder
+import io.github.simplydemo.utils.Logger
 import io.github.thenovaworks.json.query.JsonQueryHandler
 import io.github.thenovaworks.json.query.SqlSession
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
+import java.io.IOException
 import kotlin.test.assertTrue
 
 class GoogleChatNotifyHandlerTest {
 
-    val webHookUrl =
-        // "https://lh4.googleusercontent.com/proxy/QaMYgzUzbL5XtnH9jnL7sA0EcDfMLhOv8ER9at98iv1EjUZIfxlFGJRZp1A3WQnIhnQKSUHPBPjocgiCgHOMkutaRvvAt1nGTAUKxSD93mtgPckDLF792A"
-        "https://chat.googleapis.com/v1/spaces/AAAA2uu_Sws/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=NJYJd_UDKltfDO6KJCi6w24Q2fmg6IhqnfTI2rmJl6I"
-    // "https://chat.googleapis.com/v1/spaces/SPACE_ID   /messages?key=KEY                                    &token=TOKEN"
+    /**
+     * Edit Configuration
+     * select GoogleChatNotifyHandlerTest
+     * GCHAT_WEBHOOK_URL : <your-google-hangout-webhook-url>
+     */
+    private val webHookUrl = System.getenv("GCHAT_WEBHOOK_URL")
+
+    @BeforeEach
+    fun beforeEach() {
+        Logger.init(object : LambdaLogger {
+            override fun log(message: String) {
+                print(message)
+            }
+
+            override fun log(message: ByteArray) {
+                try {
+                    System.out.write(message)
+                } catch (err: IOException) {
+                    err.printStackTrace()
+                }
+            }
+        })
+    }
+
 
     @Test
     fun `testNotify-TC1001`() {
@@ -23,8 +48,9 @@ class GoogleChatNotifyHandlerTest {
     @Test
     fun `testNotify-TC1002`() {
         val handler = GoogleChatNotifyHandler(webHookUrl)
-        handler.notifySimple(("This is a Test"))
-        assertTrue { true }
+        assertDoesNotThrow {
+            handler.notifySimple(("This is a Test"))
+        }
     }
 
     @Test
@@ -52,8 +78,9 @@ class GoogleChatNotifyHandlerTest {
                 widgets = WidgetsBuilder().addButton("AWS Console", "https://example.com").build()
             ).build()
         val handler = GoogleChatNotifyHandler(webHookUrl)
-        handler.notifyCard(card)
-        assertTrue { true }
+        assertDoesNotThrow {
+            handler.notifyCard(card)
+        }
     }
 
     @Test

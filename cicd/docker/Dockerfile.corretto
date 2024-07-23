@@ -1,9 +1,5 @@
-FROM amazoncorretto:17-alpine
+FROM public.ecr.aws/lambda/java:21
 
-RUN mkdir /apps
+COPY target/aws-health-delibird.jar ${LAMBDA_TASK_ROOT}/lib/
 
-WORKDIR /apps
-
-COPY ./target/aws-health-consumer-1.0.0-SNAPSHOT.jar /apps/health-consumer.jar
-
-CMD ["java", "-cp", "/apps/health-consumer.jar", "io.github.simplydemo.LambdaHandler::handleRequest"]
+CMD ["io.github.simplydemo.LambdaHandler::handleRequest"]

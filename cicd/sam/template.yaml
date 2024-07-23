@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  AwsHealthDelibird:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.github.simplydemo.LambdaHandler
+      Runtime: java21
+      CodeUri: ../../target/aws-health-delibird.jar
+      MemorySize: 512
+      Timeout: 60
+      Environment:
+        Variables:
+          AWS_REGION: !Ref AWS_REGION
+          PROFILE_ACTIVE: !Ref PROFILE_ACTIVE
+          GCHAT_WEBHOOK_URL: !Ref GCHAT_WEBHOOK_URL
+      Events:
+        MySNSEvent:
+          Type: SNS
+          Properties:
+            Topic: arn:aws:sns:us-east-1:111122223333:aws-health-collector-topic

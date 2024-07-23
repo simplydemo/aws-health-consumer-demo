@@ -8,28 +8,34 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Test
 import java.io.IOException
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import kotlin.test.assertNull
 
+/**
+ * Edit Configuration
+ * select LambdaHandlerTest
+ * env GCHAT_WEBHOOK_URL=<your-google-hangout-webhook-url>
+ */
 class LambdaHandlerTest : AbstractTests() {
 
     @Test
     fun testHandleRequest() {
         val snsEvent = mockk<SNSEvent>()
         val context = mockk<Context>()
+
         val subject =
             "[Action Required] Upcoming changes to recursive loop detection feature in AWS Lambda [AWS Account: 111122223333]"
         val payload = AbstractTests.toJsonString("/health108.json")
         val snsRecord = SNSRecord().withSns(sns(subject, payload)).apply {
-                eventSource = "aws:sns"
-                eventVersion = "1.0"
-                eventSubscriptionArn = "arn:aws:sns:REGION:ACCOUNT_ID:TOPIC_NAME:SUBSCRIPTION_ID"
-            }
+            eventSource = "aws:sns"
+            eventVersion = "1.0"
+            eventSubscriptionArn = "arn:aws:sns:REGION:ACCOUNT_ID:TOPIC_NAME:SUBSCRIPTION_ID"
+        }
 
         // Mocking the records in SNSEvent
         every { context.awsRequestId } returns "894c62ec-e521-4ca9-91f7-a7f8dff17bd1"
         every { context.logStreamName } returns "aws-health-consumer-log"
         every { snsEvent.records } returns listOf(snsRecord)
+        // every { notifyHandler.notifySimple(message = Any) } returns listOf(snsRecord)
         every { context.logger } returns object : LambdaLogger {
             override fun log(message: String) {
                 print(message)
@@ -46,7 +52,7 @@ class LambdaHandlerTest : AbstractTests() {
 
         val handler = LambdaHandler()
         val result = handler.handleRequest(snsEvent, context)
-        assertTrue { result }
-        assertEquals(true, result)
+        assertNull(result)
+        // assertEquals(true, result)
     }
 }

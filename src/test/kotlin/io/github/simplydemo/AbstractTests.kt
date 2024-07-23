@@ -1,10 +1,11 @@
 package io.github.simplydemo
 
+import arrow.core.Either
 import com.amazonaws.services.lambda.runtime.events.SNSEvent
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import io.github.simplydemo.config.AppConfig
-import io.github.simplydemo.config.loadConfig
+import io.github.simplydemo.config.AppProperties
+import io.github.simplydemo.config.loadProperties
 import org.joda.time.DateTime
 import org.junit.jupiter.api.BeforeAll
 import java.util.*
@@ -43,17 +44,12 @@ open class AbstractTests {
         @JvmStatic
         @BeforeAll
         fun beforeAll(): Unit {
-            System.setProperty("profiles.active", "local")
+            System.setProperty("PROFILE_ACTIVE", "test")
             println("============ beforeAll ========  ")
         }
     }
 
-    val config = loadConfig().fold(
-        {
-            AppConfig("", "", "")
-        },
-        { config -> config })
-
+    val props = loadProperties().fold({ AppProperties() }, { it })
 
     private val objectMapper: ObjectMapper = jacksonObjectMapper()
 

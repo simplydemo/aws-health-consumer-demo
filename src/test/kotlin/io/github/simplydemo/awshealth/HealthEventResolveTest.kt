@@ -49,22 +49,22 @@ from    health
         // println("=====================================")
         // println("keys: ${sqlSession.getKeys(2)}")
 
-        val region = rs.getString("detail.eventRegion").takeIf { !it.isNullOrBlank() } ?: rs.getString("region")
+        val region = rs.getString("detail.eventRegion").takeIf { it.isNotBlank() } ?: rs.getString("region")
         val title = "${rs.getString("detail-type")} [${region.uppercase()}]"
         val affectedAccount =
-            rs.getString("detail.affectedAccount").takeIf { !it.isNullOrBlank() } ?: rs.getString("account")
+            rs.getString("detail.affectedAccount").takeIf { it.isNotBlank() } ?: rs.getString("account")
         val category = rs.getString("detail.eventTypeCategory")
         val service = rs.getString("detail.service")
-        val description = rs.getList("detail.eventDescription")?.firstOrNull()?.get("latestDescription") as String ?: ""
+        val description = rs.getList("detail.eventDescription")?.firstOrNull()?.get("latestDescription") as String
         val affectedEntities = rs.getList("detail.affectedEntities")
 
-        val severityCriticalSubject: List<String>? = config.severitySubjectCritical?.split(",")?.map { it.trim() }
-        val severityHighSubject: List<String>? = config.severitySubjectHigh?.split(",")?.map { it.trim() }
-        val severityCriticalDesc: List<String>? = config.severityCritical?.split(",")?.map { it.trim() }
-        val severityHighDesc: List<String>? = config.severityHigh?.split(",")?.map { it.trim() }
-        val severityWarningDesc: List<String>? = config.severityWarning?.split(",")?.map { it.trim() }
+        val severityCriticalSubject: List<String>? = props.getString("severity.subject.critical")?.split(",")?.map { it.trim() }
+        val severityHighSubject: List<String>? = props.getString("severity.subject.high")?.split(",")?.map { it.trim() }
+        val severityCriticalDesc: List<String>? = props.getString("severity.critical")?.split(",")?.map { it.trim() }
+        val severityHighDesc: List<String>? = props.getString("severity.high")?.split(",")?.map { it.trim() }
+        val severityWarningDesc: List<String>? = props.getString("severity.warning")?.split(",")?.map { it.trim() }
 
-        var severity = when {
+        val severity = when {
             isPatternMatched(subject, severityCriticalSubject) -> "CRITICAL"
             isPatternMatched(subject, severityHighSubject) -> "HIGH"
             isPatternMatched(description, severityCriticalDesc) -> "CRITICAL"
@@ -91,8 +91,8 @@ from    health
             val affectedRcs = StringBuilder()
             affectedEntities.forEach() { v ->
                 val entityValue = v["entityValue"] as String
-                val status = v["status"] as String
-                val lastUpdatedTime = v["lastUpdatedTime"] as String
+                val status = v["status"] as String?
+                val lastUpdatedTime = v["lastUpdatedTime"] as String?
                 affectedRcs.append("\n")
                 affectedRcs.append(entityValue)
                 if (status != null) {
@@ -125,22 +125,22 @@ from    health
         val sqlSession = SqlSession(JsonQueryHandler("health", sns.message))
         val rs = sqlSession.queryForObject(this.sql)
 
-        val region = rs.getString("detail.eventRegion").takeIf { !it.isNullOrBlank() } ?: rs.getString("region")
+        val region = rs.getString("detail.eventRegion").takeIf { it.isNotBlank() } ?: rs.getString("region")
         val title = "${rs.getString("detail-type")} [${region.uppercase()}]"
         val affectedAccount =
-            rs.getString("detail.affectedAccount").takeIf { !it.isNullOrBlank() } ?: rs.getString("account")
+            rs.getString("detail.affectedAccount").takeIf { it.isNotBlank() } ?: rs.getString("account")
         val category = rs.getString("detail.eventTypeCategory")
         val service = rs.getString("detail.service")
-        val description = rs.getList("detail.eventDescription")?.firstOrNull()?.get("latestDescription") as String ?: ""
+        val description = rs.getList("detail.eventDescription")?.firstOrNull()?.get("latestDescription") as String
         val affectedEntities = rs.getList("detail.affectedEntities")
 
-        val severityCriticalSubject: List<String>? = config.severitySubjectCritical?.split(",")?.map { it.trim() }
-        val severityHighSubject: List<String>? = config.severitySubjectHigh?.split(",")?.map { it.trim() }
-        val severityCriticalDesc: List<String>? = config.severityCritical?.split(",")?.map { it.trim() }
-        val severityHighDesc: List<String>? = config.severityHigh?.split(",")?.map { it.trim() }
-        val severityWarningDesc: List<String>? = config.severityWarning?.split(",")?.map { it.trim() }
+        val severityCriticalSubject: List<String>? = props.getString("severity.subject.critical")?.split(",")?.map { it.trim() }
+        val severityHighSubject: List<String>? = props.getString("severity.subject.high")?.split(",")?.map { it.trim() }
+        val severityCriticalDesc: List<String>? = props.getString("severity.critical")?.split(",")?.map { it.trim() }
+        val severityHighDesc: List<String>? = props.getString("severity.high")?.split(",")?.map { it.trim() }
+        val severityWarningDesc: List<String>? = props.getString("severity.warning")?.split(",")?.map { it.trim() }
 
-        var severity = when {
+        val severity = when {
             isPatternMatched(subject, severityCriticalSubject) -> "CRITICAL"
             isPatternMatched(subject, severityHighSubject) -> "HIGH"
             isPatternMatched(description, severityCriticalDesc) -> "CRITICAL"
@@ -167,8 +167,8 @@ from    health
             val affectedRcs = StringBuilder()
             affectedEntities.forEach() { v ->
                 val entityValue = v["entityValue"] as String
-                val status = v["status"] as String
-                val lastUpdatedTime = v["lastUpdatedTime"] as String
+                val status = v["status"] as String?
+                val lastUpdatedTime = v["lastUpdatedTime"] as String?
                 affectedRcs.append("\n")
                 affectedRcs.append(entityValue)
                 if (status != null) {

@@ -1,0 +1,31 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-1:123456789012:ExampleTopic",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
+        "TopicArn": "arn:aws:sns:us-east-1:123456789012:ExampleTopic",
+        "Subject": "example subject",
+        "Message": "{\n  \"version\": \"0\",\n  \"id\": \"7bf73129-1428-4cd3-a780-95db273d1602\",\n  \"detail-type\": \"AWS Health Event\",\n  \"source\": \"aws.health\",\n  \"account\": \"111122223333\",\n  \"time\": \"2023-01-26T01:43:21Z\",\n  \"region\": \"ap-southeast-2\",\n  \"resources\": [],\n  \"detail\": {\n    \"eventArn\": \"arn:aws:health:ap-southeast-2::event/AWS_ELASTICLOADBALANCING_API_ISSUE_90353408594353980\",\n    \"service\": \"ELASTICLOADBALANCING\",\n    \"eventTypeCode\": \"AWS_ELASTICLOADBALANCING_OPERATIONAL_ISSUE\",\n    \"eventTypeCategory\": \"issue\",\n    \"eventScopeCode\": \"PUBLIC\",\n    \"communicationId\": \"4826e1b01e4eed2b0f117c54306d907c713586799d76d487c9132a40149ac107-1\",\n    \"startTime\": \"Thu, 26 Jan 2023 13:19:03 GMT\",\n    \"endTime\": \"Thu, 26 Jan 2023 13:44:13 GMT\",\n    \"lastUpdatedTime\": \"Thu, 26 Jan 2023 13:44:13 GMT\",\n    \"statusCode\": \"open\",\n    \"eventRegion\": \"ap-southeast-2\",\n    \"eventDescription\": [\n      {\n        \"language\": \"en_US\",\n        \"latestDescription\": \"A description of the event will be provided here\"\n      }\n    ],\n    \"affectedAccount\": \"111122223333\",\n    \"page\": \"1\",\n    \"totalPages\": \"1\"\n  }\n}",
+        "Timestamp": "2019-01-02T12:45:07.000Z",
+        "SignatureVersion": "1",
+        "Signature": "EXAMPLE",
+        "SigningCertUrl": "EXAMPLE",
+        "UnsubscribeUrl": "EXAMPLE",
+        "MessageAttributes": {
+          "Test": {
+            "Type": "String",
+            "Value": "TestString"
+          },
+          "TestBinary": {
+            "Type": "Binary",
+            "Value": "TestBinary"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package io.github.simplydemo.handler
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.github.simplydemo.gchat.message.CardV2Message
+import io.github.simplydemo.utils.Logger
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -18,26 +19,23 @@ class GoogleChatNotifyHandler(
 
     private fun sendMessage(payload: String) {
         val requestBody = payload.toRequestBody("application/json; charset=utf-8".toMediaType())
-        val request = Request.Builder()
-            .url(webhookUrl)
-            .post(requestBody)
-            .build()
+        val request = Request.Builder().url(webhookUrl).post(requestBody).build()
 
         client.newCall(request).execute().use { response ->
-            println("response \n $response")
-            println("response.isSuccessful \n ${response.isSuccessful}")
-            println("response.isRedirect \n ${response.isRedirect}")
+            // Logger.log("response.isSuccessful \n ${response.isSuccessful}")
+            Logger.log("response.isRedirect \n ${response.isRedirect}")
             if (!response.isSuccessful) {
+                Logger.log("response \n $response")
                 throw IOException("Unexpected code $response")
             }
-            println("Message sent successfully")
+            Logger.log("Message sent successfully")
         }
     }
 
     fun notifyCard(cardV2: CardV2Message) {
         val payload = objectMapper.writeValueAsString(cardV2)
-        println("cardV2: $payload")
-        // sendMessage(payload)
+        Logger.log("cardV2: $payload")
+        sendMessage(payload)
     }
 
 
@@ -45,6 +43,5 @@ class GoogleChatNotifyHandler(
         val payload = objectMapper.writeValueAsString(mapOf("text" to message))
         sendMessage(payload)
     }
-
 
 }
