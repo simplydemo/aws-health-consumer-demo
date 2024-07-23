@@ -38,3 +38,12 @@ docker run --rm \
 curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d @./cicd/docker/event.json -H "Content-Type: application/json"
 ```
 
+## Appendix
+
+```
+docker login
+
+docker tag "aws-health-delibird:v1.0-local" symplesims/aws-health-delibird:1.0.0
+
+docker push symplesims/aws-health-delibird:1.0.0
+```

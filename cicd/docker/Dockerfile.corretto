@@ -1,5 +1,8 @@
 FROM public.ecr.aws/lambda/java:21
 
+ENV PROFILE_ACTIVE=dev
+ENV GCHAT_WEBHOOK_URL=
+
 COPY target/aws-health-delibird.jar ${LAMBDA_TASK_ROOT}/lib/
 
 CMD ["io.github.simplydemo.LambdaHandler::handleRequest"]
