@@ -55,6 +55,7 @@ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d
 ## Appendix
 - [SAM](./cicd/sam/HELP.md) 모델을 통한 로컬 테스트 가이드
 - [docker](./cicd/docker/HELP.md) 컨테이너를 통한 로컬 테스트 가이드
+- [docker-hub](https://hub.docker.com/r/symplesims/aws-health-delibird)  
 - [sdk-for-kotlin](https://docs.aws.amazon.com/sdk-for-kotlin/)
 - [aws-doc-sdk-examples](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin)
 - [SageMakerLambdaFunction](https://github.com/scmacdon/aws-doc-sdk-examples/blob/main/kotlin/usecases/workflow_sagemaker_lambda/src/main/kotlin/org/example/SageMakerLambdaFunction.kt)
