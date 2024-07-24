@@ -10,7 +10,7 @@ import io.github.simplydemo.utils.MessageUtils
 import io.github.thenovaworks.json.query.JsonQueryHandler
 import io.github.thenovaworks.json.query.SqlSession
 
-class CardV2PayloadBuilder(val props: AppProperties) : PayloadBuilder {
+class CardV2PayloadBuilder(private val props: AppProperties) : PayloadBuilder {
 
     private val sql = """
 select  id,
@@ -35,7 +35,7 @@ select  id,
 from    health """
 
     override fun buildMessage(sns: SNSEvent.SNS): CardV2Message {
-        val subject = sns.subject
+        val subject = sns.subject ?: "CUSTOM-EVENT-NOTIFICATION"
         val sqlSession = SqlSession(JsonQueryHandler("health", sns.message))
         val rs = sqlSession.queryForObject(this.sql)
 

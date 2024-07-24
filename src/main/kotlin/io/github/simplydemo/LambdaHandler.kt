@@ -24,6 +24,7 @@ class LambdaHandler : RequestHandler<SNSEvent, Void> {
     override fun handleRequest(event: SNSEvent, context: Context): Void? {
         Logger.init(context.logger)
         Logger.log("request-id: ${context.awsRequestId}")
+        Logger.log("event: $event")
         Logger.log("props.toString(): ${props.toString()}")
         processSnsEvent(event)
         return null

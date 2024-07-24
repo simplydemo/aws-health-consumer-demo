@@ -25,7 +25,7 @@ open class AbstractTests {
         }
 
         @JvmStatic
-        fun sns(subject: String, message: String): SNSEvent.SNS {
+        fun sns(subject: String?, message: String): SNSEvent.SNS {
             return SNSEvent.SNS().apply {
                 this.message = message
                 this.subject = subject

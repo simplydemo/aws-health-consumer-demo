@@ -39,7 +39,6 @@ class GoogleChatNotifyHandlerTest {
         })
     }
 
-
     @Test
     fun `testNotify-TC1001`() {
         assertTrue { true }
